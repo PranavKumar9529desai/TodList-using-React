@@ -4,8 +4,11 @@ import '../../src/App.css' ;
 
 
 
-export function Todo({Tasks}){
-  const [completedTasks, setCompletedTasks] = useState([Tasks.completed]);
+export function Todo({Tasks, fetchData}){
+
+  const [completedTasks, setCompletedTasks] = useState([]);
+  // console.log('task',Tasks);
+  console.log('tasks..',Tasks.completed)
 
   // handle the completed tasks
   function handleComplete(task_id){
@@ -16,6 +19,7 @@ export function Todo({Tasks}){
         // updating the backend
         console.log(response);
         setCompletedTasks([...completedTasks , task_id]);
+        fetchData();
       })
       .catch(error=>{
         console.log(error);
@@ -30,7 +34,6 @@ export function Todo({Tasks}){
                { 
                 // let isCompleted = completedTasks.includes(todo._id);
                 let isCompleted = todo.completed;
-
                 // console.log(isCompleted);
                 return <div key={index} className={isCompleted===true ? 'completed' : ''}>
                             <h3>{todo.title}</h3>

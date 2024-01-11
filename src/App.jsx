@@ -34,8 +34,7 @@ function App() {
     
     return <>
        <CreateTodo onTaskCreated={fetchData} />
-       <Todo Tasks={tasks} />
-    </> 
+       <Todo Tasks={tasks} fetchData={fetchData} />    </> 
 
 }
 
