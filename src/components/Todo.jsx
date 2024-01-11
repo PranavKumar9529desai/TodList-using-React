@@ -5,7 +5,7 @@ import '../../src/App.css' ;
 
 
 export function Todo({Tasks}){
-  const [completedTasks, setCompletedTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([Tasks.completed]);
 
   // handle the completed tasks
   function handleComplete(task_id){
