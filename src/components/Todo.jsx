@@ -16,8 +16,6 @@ export function Todo({Tasks}){
         // updating the backend
         console.log(response);
         setCompletedTasks([...completedTasks , task_id]);
-        
-        // calling the Tasks to fetch the data once again as put request is made 
       })
       .catch(error=>{
         console.log(error);
