@@ -28,10 +28,11 @@ export function Todo({Tasks}){
         {   
           Tasks.map(function(todo,index)
                { 
-                let isCompleted = completedTasks.includes(todo._id);
+                // let isCompleted = completedTasks.includes(todo._id);
+                let isCompleted = todo.completed;
 
                 // console.log(isCompleted);
-                return <div key={index} className={isCompleted ? 'completed' : ''}>
+                return <div key={index} className={isCompleted===true ? 'completed' : ''}>
                             <h3>{todo.title}</h3>
                             <p>{todo.description }</p>
                             <input type="checkbox" placeholder="Mark as complete" checked={isCompleted} onChange=   {() =>handleComplete(todo._id)}></input>
