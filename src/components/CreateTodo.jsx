@@ -7,7 +7,7 @@ export function CreateTodo({onTaskCreated}){
     const [Description , setDescription]= useState('');
     
     function handleSubmit(){
-        axios.post('http://localhost:3000/todo', {
+        axios.post('https://todo-app-production-b9eb.up.railway.app/todo', {
             title : Title ,
             description : Description ,
             completed : false
@@ -20,8 +20,7 @@ export function CreateTodo({onTaskCreated}){
             setTitle('');
             // console.log("Tasks",Tasks);
             onTaskCreated();
-
-
+            // Lifting state up" is a common pattern in React where you move state from a child component to a parent component. This allows multiple child components to share and modify the same state.
           })
           .catch(function (error) {
             console.log(error);

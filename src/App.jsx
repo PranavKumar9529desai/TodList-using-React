@@ -14,8 +14,8 @@ function App() {
     function fetchData(){
         axios.get('https://todo-app-production-b9eb.up.railway.app/todo')
           .then(response =>{
-            console.log(response.todos);
-            setTasks(response.data.msg);
+            console.log(response.data.todos);
+            setTasks(response.data.todos);
             console.log(tasks);
             // const completedtasks = response.data.msg.filter(task=>{task.completed})
             // setCompletedTasks(completedtasks);

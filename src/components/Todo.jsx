@@ -9,7 +9,7 @@ export function Todo({Tasks}){
 
   // handle the completed tasks
   function handleComplete(task_id){
-      axios.put('http://localhost:3000/completed',{
+      axios.put('https://todo-app-production-b9eb.up.railway.app/todo/completed',{
         id : task_id ,
       })
       .then(response=>{
