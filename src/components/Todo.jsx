@@ -8,7 +8,7 @@ export function Todo({Tasks}){
   const [completedTasks, setCompletedTasks] = useState([]);
 
   // handle the completed tasks
-  function handleComplete(task_id,{Tasks}){
+  function handleComplete(task_id){
       axios.put('http://localhost:3000/completed',{
         id : task_id ,
       })
@@ -16,7 +16,7 @@ export function Todo({Tasks}){
         // updating the backend
         console.log(response);
         setCompletedTasks([...completedTasks , task_id]);
-        Tasks();
+        
         // calling the Tasks to fetch the data once again as put request is made 
       })
       .catch(error=>{
@@ -30,7 +30,8 @@ export function Todo({Tasks}){
         {   
           Tasks.map(function(todo,index)
                { 
-                let isCompleted = todo.completed;
+                let isCompleted = completedTasks.includes(todo._id);
+
                 // console.log(isCompleted);
                 return <div key={index} className={isCompleted ? 'completed' : ''}>
                             <h3>{todo.title}</h3>
