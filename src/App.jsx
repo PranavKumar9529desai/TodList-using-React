@@ -3,38 +3,31 @@ import { CreateTodo } from './components/CreateTodo' ;
 import { Todo } from './components/Todo';
 import axios from 'axios';
 
+
 function App() {
-    const [tasks,setTasks] = useState([]);
-// useeffect(function , dependencies) ;
+ const [tasks,setTasks] = useState([]);
 
-  useEffect(()=>{
-    fetchData();
-  } , []);
+        useEffect(()=>{
+        fetchData();
+    } , []);
 
-    function fetchData(){
-        axios.get('https://todo-app-production-b9eb.up.railway.app/todo')
+    function fetchData()
+    {
+      axios.get(`${import.meta.env.VITE_BACKEND_URL}/todos`)
           .then(response =>{
-            console.log(response.data.todos);
-            setTasks(response.data.todos);
-            console.log(tasks);
-            // const completedtasks = response.data.msg.filter(task=>{task.completed})
-            // setCompletedTasks(completedtasks);
-            // console.log(setCompletedTasks);
-          })
+            setTasks(response.data.msg);
+            console.log(response);
+           })
            .
            catch(error=>{
-            console.error(error);
-           })
+            console.log(error);
+           });
     }
       
-    // empty dependency array means this effect runs once on mount
-    
-      
-   
-    
     return <>
-       <CreateTodo onTaskCreated={fetchData} />
-       <Todo Tasks={tasks} fetchData={fetchData} />    </> 
+            <CreateTodo setTasks={setTasks} />
+            <Todo setTasks={setTasks} Tasks={tasks} />   
+          </> 
 
 }
 
