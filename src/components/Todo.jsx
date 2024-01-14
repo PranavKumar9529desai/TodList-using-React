@@ -4,17 +4,26 @@ import '../../src/App.css';
 export function Todo({setTasks, Tasks}){
 
   function handleComplete(task_id) {
-     axios.put(`${import.meta.env.VITE_BACKEND_URL}/completed`, { id: task_id })
-        .then(response => {
-            if (response.status === 200) {
-                setTasks(prevTasks => prevTasks.map(task => 
-                    task._id === task_id ? {...task, completed: true} : task
-                ));
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/completed`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: task_id }),
+  })
+      .then(response => {
+          if (response.status === 200) {
+              setTasks(prevTasks =>
+                  prevTasks.map(task =>
+                      task._id === task_id ? { ...task, completed: true } : task
+                  )
+              );
+          }
+      })
+      .catch(error => {
+          console.log(error);
+      });
+  
 }
 
 function handleDelete(task){
@@ -43,13 +52,13 @@ function handleDelete(task){
           Tasks.map(function(todo,index)
                { 
                 let isCompleted = todo.completed;
-                 return <div key={index} className={`item ${isCompleted ? 'completed' : ''}`}>
-                            <h3>{todo.title}</h3>
+                 return <div key={index} className={`box ${isCompleted ? 'completed' : ''}`}>
+                            <h3 style={{textAlign : 'center'}}>{todo.title}</h3>
                             <br />
                             <p>{todo.description }</p>
                             <br />
                             <input type="checkbox" placeholder="Mark as complete" checked={isCompleted} onChange=   {() =>handleComplete(todo._id)}></input>
-                            {todo.completed && <button onClick={()=>handleDelete(todo)}>delete</button>}
+                            {todo.completed && <button style={{fontSize : 10}} onClick={()=>handleDelete(todo)}>delete</button>}
                       </div> 
                
                })
