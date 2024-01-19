@@ -25,6 +25,7 @@ html {
     padding: 10px;
   
     font-size: 1.8em;
+     
   
   }
   
@@ -70,6 +71,15 @@ html {
     text-align: center;
 
     
+  
+  }
+  
+
+  #heading {
+
+    background-color: #A683E3;
+  
+    text-align: center;
   
   }
   

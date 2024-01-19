@@ -57,7 +57,7 @@ function handleDelete(task){
                             <br />
                             <p>{todo.description }</p>
                             <br />
-                            <input type="checkbox" placeholder="Mark as complete" checked={isCompleted} onChange=   {() =>handleComplete(todo._id)}></input>
+                            <input type="checkbox" placeholder="Mark as complete" checked={isCompleted} onChange=   {() => handleComplete(todo._id)}></input>
                             {todo.completed && <button style={{fontSize : 10}} onClick={()=>handleDelete(todo)}>delete</button>}
                       </div> 
                

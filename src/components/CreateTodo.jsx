@@ -2,9 +2,11 @@ import { useState } from "react"
 import axios from 'axios' ;
 
 
-export function CreateTodo({setTasks}){
+export function CreateTodo({setTasks , Date}){
   const [Title ,setTitle] = useState('');
   const [Description , setDescription]= useState('');
+
+  
   
   function handleSubmit(){
       const newTodo = {
@@ -27,8 +29,11 @@ export function CreateTodo({setTasks}){
 
 
     return   <>
+            <div class="box" id="heading">
+                     <h1>{Date}</h1>
+             </div>
              <div className="box">
-            <input placeholder="Title" type="text" value={Title} onChange={(e)=>{
+             <input placeholder="Title" type="text" value={Title} onChange={(e)=>{
                 const value = e.target.value ;
                 setTitle(value);
             }}/><br /><br />

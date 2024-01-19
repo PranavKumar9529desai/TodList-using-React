@@ -5,6 +5,12 @@ import axios from 'axios';
 
 
 function App() {
+  // calculating the date 
+  let currentDate = new Date();
+  let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  let formattedDate = currentDate.toLocaleDateString("en-US", options);
+
+
  const [tasks,setTasks] = useState([]);
 
         useEffect(()=>{
@@ -25,7 +31,7 @@ function App() {
     }
       
     return <>
-            <CreateTodo setTasks={setTasks} />
+            <CreateTodo setTasks={setTasks} Date={formattedDate} />
             <Todo setTasks={setTasks} Tasks={tasks} />   
           </> 
 
